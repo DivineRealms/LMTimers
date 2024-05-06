@@ -1,6 +1,7 @@
 name: LMTimers
 version: '${version}'
-main: io.github.divinerealms.result.LMTimers
+api-version: 1.8
+main: io.github.divinerealms.LMTimers
 prefix: LMTimers
 authors: [Neeonn]
 depend:
