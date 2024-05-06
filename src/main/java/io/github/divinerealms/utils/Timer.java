@@ -1,4 +1,4 @@
-package io.github.divinerealms.result.utils;
+package io.github.divinerealms.utils;
 
 import lombok.Getter;
 import org.bukkit.plugin.Plugin;

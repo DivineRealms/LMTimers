@@ -10,13 +10,15 @@ import lombok.Getter;
 import org.bukkit.command.CommandSender;
 
 @Getter
-@CommandAlias("leaguemanager|lm")
-public class RSCommand extends BaseCommand {
+@CommandAlias("lmtimers|lmt")
+public class LMTCommand extends BaseCommand {
   private final LMTimers instance;
+  private final UtilManager utilManager;
   private final Logger logger;
 
-  public RSCommand(final UtilManager utilManager, final LMTimers instance) {
+  public LMTCommand(final UtilManager utilManager, final LMTimers instance) {
     this.instance = instance;
+    this.utilManager = utilManager;
     this.logger = utilManager.getLogger();
   }
 
@@ -37,6 +39,7 @@ public class RSCommand extends BaseCommand {
   public void onReload(CommandSender sender) {
     getInstance().setupMessages();
     getInstance().setup();
+    getUtilManager().reload();
     getLogger().send(sender, Lang.RELOAD.getConfigValue(null));
   }
 }

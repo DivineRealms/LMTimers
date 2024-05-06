@@ -1,7 +1,10 @@
-name: Result
+name: LMTimers
 version: '${version}'
-main: io.github.divinerealms.result.Result
-prefix: Result
+main: io.github.divinerealms.result.LMTimers
+prefix: LMTimers
 authors: [Neeonn]
-description: Result Tracker for Divine Realms Football
+depend:
+  - LuckPerms
+description: LMTimers Tracker for Divine Realms Football
 website: https://divinerealms.org
+load: POSTWORLD

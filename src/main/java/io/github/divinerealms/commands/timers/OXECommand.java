@@ -1,12 +1,12 @@
-package io.github.divinerealms.result.commands.timers;
+package io.github.divinerealms.commands.timers;
 
 import co.aikar.commands.BaseCommand;
 import co.aikar.commands.annotation.*;
-import io.github.divinerealms.result.configs.Lang;
-import io.github.divinerealms.result.managers.UtilManager;
-import io.github.divinerealms.result.utils.Logger;
-import io.github.divinerealms.result.utils.Time;
-import io.github.divinerealms.result.utils.Timer;
+import io.github.divinerealms.configs.Lang;
+import io.github.divinerealms.managers.UtilManager;
+import io.github.divinerealms.utils.Logger;
+import io.github.divinerealms.utils.Time;
+import io.github.divinerealms.utils.Timer;
 import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;

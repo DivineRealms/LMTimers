@@ -1,4 +1,4 @@
-package io.github.divinerealms.result.managers;
+package io.github.divinerealms.managers;
 
 import lombok.Getter;
 import org.bukkit.configuration.file.FileConfiguration;

@@ -1,4 +1,4 @@
-package io.github.divinerealms.result.configs;
+package io.github.divinerealms.configs;
 
 import lombok.Getter;
 import org.bukkit.configuration.file.YamlConfiguration;

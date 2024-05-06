@@ -1,7 +1,8 @@
-package io.github.divinerealms.result.managers;
+package io.github.divinerealms.managers;
 
-import io.github.divinerealms.result.Result;
-import io.github.divinerealms.result.utils.Logger;
+import io.github.divinerealms.LMTimers;
+import io.github.divinerealms.utils.Helper;
+import io.github.divinerealms.utils.Logger;
 import lombok.Getter;
 import org.bukkit.ChatColor;
 
@@ -11,12 +12,20 @@ import java.time.format.DateTimeFormatter;
 
 @Getter
 public class UtilManager {
-  private final Result plugin;
-  private final Logger logger;
+  private final LMTimers plugin;
+  private Logger logger;
+  private Helper helper;
 
-  public UtilManager(final Result plugin) {
+  public UtilManager(final LMTimers plugin) {
     this.plugin = plugin;
     this.logger = new Logger(plugin);
+    this.helper = new Helper(plugin);
+    reload();
+  }
+
+  public void reload() {
+    this.logger = new Logger(plugin);
+    this.helper = new Helper(plugin);
   }
 
   public boolean isTaskQueued(final Integer taskId) {

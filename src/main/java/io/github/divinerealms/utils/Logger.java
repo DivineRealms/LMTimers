@@ -1,9 +1,8 @@
-package io.github.divinerealms.result.utils;
+package io.github.divinerealms.utils;
 
 import lombok.Getter;
 import net.minecraft.server.v1_8_R3.IChatBaseComponent;
 import net.minecraft.server.v1_8_R3.PacketPlayOutChat;
-import org.bukkit.ChatColor;
 import org.bukkit.Server;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
@@ -15,7 +14,6 @@ import org.bukkit.plugin.PluginDescriptionFile;
 import java.util.stream.Collectors;
 
 @Getter
-@SuppressWarnings("unused")
 public class Logger {
   private final Server server;
   private final PluginDescriptionFile description;
@@ -38,12 +36,6 @@ public class Logger {
     getConsoleSender().sendMessage(message);
   }
 
-  public void sendActionBar(final Player player, final String message) {
-    IChatBaseComponent iChatBaseComponent = IChatBaseComponent.ChatSerializer.a("{\"text\": \"" + message + "\"}");
-    PacketPlayOutChat packetPlayOutChat = new PacketPlayOutChat(iChatBaseComponent, (byte) 2);
-    ((CraftPlayer) player).getHandle().playerConnection.sendPacket(packetPlayOutChat);
-  }
-
   public void broadcastBar(final String message) {
     IChatBaseComponent iChatBaseComponent = IChatBaseComponent.ChatSerializer.a("{\"text\": \"" + message + "\"}");
     PacketPlayOutChat packetPlayOutChat = new PacketPlayOutChat(iChatBaseComponent, (byte) 2);
@@ -55,14 +47,5 @@ public class Logger {
     pluginName = getDescription().getFullName();
     authors = getDescription().getAuthors().stream().map(String::valueOf).collect(Collectors.joining(", "));
     serverVersion = getServer().getName() + " - " + getServer().getBukkitVersion();
-  }
-
-  public String[] startupBanner() {
-    return new String[]{"&r","&d  88     &e8b    d8   &2" + getPluginName(),"&d  88     &e88b  d88   &5Authors: &d" + getAuthors(),"&d  88  .o &e88YbdP88","&d  88ood8 &e88 YY 88   &8Running on " + getServerVersion(),"&r"};
-  }
-
-  public void sendBanner() {
-    for (final String message : startupBanner())
-      getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', message));
   }
 }
