@@ -1,0 +1,7 @@
+name: Result
+version: '${version}'
+main: io.github.divinerealms.result.Result
+prefix: Result
+authors: [Neeonn]
+description: Result Tracker for Divine Realms Football
+website: https://divinerealms.org
