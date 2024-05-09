@@ -1,4 +1,4 @@
-package io.github.divinerealms.utils;
+package io.github.divinerealms.lmtimers.utils;
 
 import java.util.HashMap;
 import java.util.Map;

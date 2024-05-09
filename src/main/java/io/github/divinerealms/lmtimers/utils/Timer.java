@@ -1,4 +1,4 @@
-package io.github.divinerealms.utils;
+package io.github.divinerealms.lmtimers.utils;
 
 import lombok.Getter;
 import org.bukkit.plugin.Plugin;

@@ -1,11 +1,11 @@
-package io.github.divinerealms.commands;
+package io.github.divinerealms.lmtimers.commands;
 
 import co.aikar.commands.BaseCommand;
 import co.aikar.commands.annotation.*;
-import io.github.divinerealms.LMTimers;
-import io.github.divinerealms.configs.Lang;
-import io.github.divinerealms.managers.UtilManager;
-import io.github.divinerealms.utils.Logger;
+import io.github.divinerealms.lmtimers.LMTimers;
+import io.github.divinerealms.lmtimers.configs.Lang;
+import io.github.divinerealms.lmtimers.managers.UtilManager;
+import io.github.divinerealms.lmtimers.utils.Logger;
 import lombok.Getter;
 import org.bukkit.command.CommandSender;
 
@@ -39,7 +39,6 @@ public class LMTCommand extends BaseCommand {
   public void onReload(CommandSender sender) {
     getInstance().setupMessages();
     getInstance().setup();
-    getUtilManager().reload();
     getLogger().send(sender, Lang.RELOAD.getConfigValue(null));
   }
 }

@@ -1,9 +1,9 @@
 name: LMTimers
 version: '${version}'
 api-version: 1.8
-main: io.github.divinerealms.LMTimers
+main: io.github.divinerealms.lmtimers.LMTimers
 prefix: LMTimers
-authors: [Neeonn]
+author: Neeonn
 depend:
   - LuckPerms
 description: LMTimers Tracker for Divine Realms Football

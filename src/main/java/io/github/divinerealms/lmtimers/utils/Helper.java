@@ -1,6 +1,6 @@
-package io.github.divinerealms.utils;
+package io.github.divinerealms.lmtimers.utils;
 
-import io.github.divinerealms.LMTimers;
+import io.github.divinerealms.lmtimers.LMTimers;
 import lombok.Getter;
 import lombok.Setter;
 import net.luckperms.api.LuckPerms;

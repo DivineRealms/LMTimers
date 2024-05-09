@@ -1,8 +1,8 @@
-package io.github.divinerealms.managers;
+package io.github.divinerealms.lmtimers.managers;
 
-import io.github.divinerealms.LMTimers;
-import io.github.divinerealms.utils.Helper;
-import io.github.divinerealms.utils.Logger;
+import io.github.divinerealms.lmtimers.LMTimers;
+import io.github.divinerealms.lmtimers.utils.Helper;
+import io.github.divinerealms.lmtimers.utils.Logger;
 import lombok.Getter;
 import org.bukkit.ChatColor;
 
@@ -18,12 +18,6 @@ public class UtilManager {
 
   public UtilManager(final LMTimers plugin) {
     this.plugin = plugin;
-    this.logger = new Logger(plugin);
-    this.helper = new Helper(plugin);
-    reload();
-  }
-
-  public void reload() {
     this.logger = new Logger(plugin);
     this.helper = new Helper(plugin);
   }

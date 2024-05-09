@@ -1,15 +1,15 @@
-package io.github.divinerealms;
+package io.github.divinerealms.lmtimers;
 
 import co.aikar.commands.BukkitCommandManager;
-import io.github.divinerealms.commands.LMTCommand;
-import io.github.divinerealms.commands.timers.OXECommand;
-import io.github.divinerealms.commands.timers.ResultCommand;
-import io.github.divinerealms.commands.timers.TXFCommand;
-import io.github.divinerealms.commands.timers.TimerCommand;
-import io.github.divinerealms.configs.Config;
-import io.github.divinerealms.configs.Lang;
-import io.github.divinerealms.managers.ConfigManager;
-import io.github.divinerealms.managers.UtilManager;
+import io.github.divinerealms.lmtimers.commands.LMTCommand;
+import io.github.divinerealms.lmtimers.commands.timers.OXECommand;
+import io.github.divinerealms.lmtimers.commands.timers.ResultCommand;
+import io.github.divinerealms.lmtimers.commands.timers.TXFCommand;
+import io.github.divinerealms.lmtimers.commands.timers.TimerCommand;
+import io.github.divinerealms.lmtimers.configs.Config;
+import io.github.divinerealms.lmtimers.configs.Lang;
+import io.github.divinerealms.lmtimers.managers.ConfigManager;
+import io.github.divinerealms.lmtimers.managers.UtilManager;
 import lombok.Getter;
 import lombok.Setter;
 import net.luckperms.api.LuckPerms;
@@ -19,7 +19,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 @Setter
 @Getter
-public final class LMTimers extends JavaPlugin {
+public class LMTimers extends JavaPlugin {
   private ConfigManager messagesFile = new ConfigManager(this, "");
   private YamlConfiguration config;
   private LuckPerms luckPermsAPI = null;
@@ -47,6 +47,8 @@ public final class LMTimers extends JavaPlugin {
 
   @Override
   public void onDisable() {
+    getLogger().info("Cancelling all tasks from this plugin...");
+    getServer().getScheduler().cancelTasks(this);
   }
 
   public void setup() {
@@ -71,12 +73,12 @@ public final class LMTimers extends JavaPlugin {
   }
 
   private void loadMessages() {
-    Lang.setFile(getMessagesFile().getConfig("libs/messages.yml"));
+    Lang.setFile(getMessagesFile().getConfig("messages.yml"));
 
     for (final Lang value : Lang.values())
-      getMessagesFile().getConfig("libs/messages.yml").addDefault(value.getPath(), value.getDefault());
+      getMessagesFile().getConfig("messages.yml").addDefault(value.getPath(), value.getDefault());
 
-    getMessagesFile().getConfig("libs/messages.yml").options().copyDefaults(true);
-    getMessagesFile().saveConfig("libs/messages.yml");
+    getMessagesFile().getConfig("messages.yml").options().copyDefaults(true);
+    getMessagesFile().saveConfig("messages.yml");
   }
 }

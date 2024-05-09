@@ -1,12 +1,12 @@
-package io.github.divinerealms.commands.timers;
+package io.github.divinerealms.lmtimers.commands.timers;
 
 import co.aikar.commands.BaseCommand;
 import co.aikar.commands.annotation.*;
-import io.github.divinerealms.configs.Lang;
-import io.github.divinerealms.managers.UtilManager;
-import io.github.divinerealms.utils.Logger;
-import io.github.divinerealms.utils.Time;
-import io.github.divinerealms.utils.Timer;
+import io.github.divinerealms.lmtimers.configs.Lang;
+import io.github.divinerealms.lmtimers.managers.UtilManager;
+import io.github.divinerealms.lmtimers.utils.Logger;
+import io.github.divinerealms.lmtimers.utils.Time;
+import io.github.divinerealms.lmtimers.utils.Timer;
 import lombok.Getter;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.command.CommandSender;
