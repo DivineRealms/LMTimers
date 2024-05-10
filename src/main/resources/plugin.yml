@@ -6,6 +6,7 @@ prefix: LMTimers
 author: Neeonn
 depend:
   - LuckPerms
+  - LeagueManager
 description: LMTimers Tracker for Divine Realms Football
 website: https://divinerealms.org
 load: POSTWORLD
