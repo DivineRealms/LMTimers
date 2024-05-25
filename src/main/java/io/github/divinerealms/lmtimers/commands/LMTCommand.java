@@ -39,6 +39,7 @@ public class LMTCommand extends BaseCommand {
   public void onReload(CommandSender sender) {
     getInstance().setupMessages();
     getInstance().setup();
+    getInstance().getServer().getScheduler().cancelTasks(getInstance());
     getLogger().send(sender, Lang.RELOAD.getConfigValue(null));
   }
 }
