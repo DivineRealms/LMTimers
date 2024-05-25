@@ -137,9 +137,9 @@ public class ResultCommand extends BaseCommand {
           getLogger().send("default", Lang.RESULT_ADD.getConfigValue(new String[]{args[1], home}));
         else getLogger().send("default", Lang.RESULT_ADD_ASSIST.getConfigValue(new String[]{args[1], home, args[2]}));
         if (webhook != null && isLeague()) {
-          webhook.setContent(Lang.WEBHOOK_MATCH_SCORE.getConfigValue(new String[]{args[1], HOME_NAME, UtilManager.formatTime(Timer.getSecondsParsed()), String.valueOf(home_result), String.valueOf(away_result), AWAY_NAME}));
+          webhook.setContent(Lang.WEBHOOK_MATCH_SCORE.getConfigValue(new String[]{args[1], HOME_NAME, UtilManager.formatTime(Timer.getSecondsParsed()), HOME_NAME, String.valueOf(home_result), String.valueOf(away_result), AWAY_NAME}));
           if (args.length == 3)
-            webhook.setContent(Lang.WEBHOOK_MATCH_ASSIST.getConfigValue(new String[]{args[1], HOME_NAME, UtilManager.formatTime(Timer.getSecondsParsed()), args[2], String.valueOf(home_result), String.valueOf(away_result), AWAY_NAME}));
+            webhook.setContent(Lang.WEBHOOK_MATCH_ASSIST.getConfigValue(new String[]{args[1], HOME_NAME, UtilManager.formatTime(Timer.getSecondsParsed()), args[2], HOME_NAME, String.valueOf(home_result), String.valueOf(away_result), AWAY_NAME}));
           try {
             webhook.execute();
           } catch (IOException e) {
@@ -152,9 +152,9 @@ public class ResultCommand extends BaseCommand {
           getLogger().send("default", Lang.RESULT_ADD.getConfigValue(new String[]{args[1], away}));
         else getLogger().send("default", Lang.RESULT_ADD_ASSIST.getConfigValue(new String[]{args[1], away, args[2]}));
         if (webhook != null && isLeague()) {
-          webhook.setContent(Lang.WEBHOOK_MATCH_SCORE.getConfigValue(new String[]{args[1], AWAY_NAME, UtilManager.formatTime(Timer.getSecondsParsed()), HOME_NAME, String.valueOf(home_result), String.valueOf(away_result)}));
+          webhook.setContent(Lang.WEBHOOK_MATCH_SCORE.getConfigValue(new String[]{args[1], AWAY_NAME, UtilManager.formatTime(Timer.getSecondsParsed()), HOME_NAME, String.valueOf(home_result), String.valueOf(away_result), AWAY_NAME}));
           if (args.length == 3)
-            webhook.setContent(Lang.WEBHOOK_MATCH_ASSIST.getConfigValue(new String[]{args[1], AWAY_NAME, UtilManager.formatTime(Timer.getSecondsParsed()), args[2], HOME_NAME, String.valueOf(home_result), String.valueOf(away_result)}));
+            webhook.setContent(Lang.WEBHOOK_MATCH_ASSIST.getConfigValue(new String[]{args[1], AWAY_NAME, UtilManager.formatTime(Timer.getSecondsParsed()), args[2], HOME_NAME, String.valueOf(home_result), String.valueOf(away_result), AWAY_NAME}));
           try {
             webhook.execute();
           } catch (IOException e) {
