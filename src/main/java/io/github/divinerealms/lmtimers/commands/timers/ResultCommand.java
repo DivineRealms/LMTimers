@@ -13,6 +13,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.Plugin;
 
+import java.awt.*;
 import java.io.IOException;
 
 @Getter
@@ -137,10 +138,18 @@ public class ResultCommand extends BaseCommand {
           getLogger().send("default", Lang.RESULT_ADD.getConfigValue(new String[]{args[1], home}));
         else getLogger().send("default", Lang.RESULT_ADD_ASSIST.getConfigValue(new String[]{args[1], home, args[2]}));
         if (webhook != null && isLeague()) {
-          webhook.setContent(Lang.WEBHOOK_MATCH_SCORE.getConfigValue(new String[]{args[1], HOME_NAME, UtilManager.formatTime(Timer.getSecondsParsed()), HOME_NAME, String.valueOf(home_result), String.valueOf(away_result), AWAY_NAME}));
-          if (args.length == 3)
-            webhook.setContent(Lang.WEBHOOK_MATCH_ASSIST.getConfigValue(new String[]{args[1], HOME_NAME, UtilManager.formatTime(Timer.getSecondsParsed()), args[2], HOME_NAME, String.valueOf(home_result), String.valueOf(away_result), AWAY_NAME}));
-          try {
+          webhook.setContent("");
+          if (args.length == 2) {
+            webhook.addEmbed(new DiscordWebhook.EmbedObject()
+                .setColor(Color.decode(Lang.WEBHOOK_MATCH_SCORE_COLOR.getConfigValue(null)))
+                .setAuthor(Lang.WEBHOOK_MATCH_SCORE_AUTHOR_NAME.getConfigValue(new String[]{HOME_NAME}), null, Lang.WEBHOOK_MATCH_SCORE_AUTHOR_ICON.getConfigValue(null))
+                .setDescription(Lang.WEBHOOK_MATCH_SCORE_DESC.getConfigValue(new String[]{args[1], HOME_NAME, UtilManager.formatTime(Timer.getSecondsParsed()), HOME_NAME, String.valueOf(home_result), String.valueOf(away_result), AWAY_NAME})));
+          } else {
+            webhook.addEmbed(new DiscordWebhook.EmbedObject()
+                .setColor(Color.decode(Lang.WEBHOOK_MATCH_SCORE_COLOR.getConfigValue(null)))
+                .setAuthor(Lang.WEBHOOK_MATCH_SCORE_AUTHOR_NAME.getConfigValue(new String[]{HOME_NAME}), null, Lang.WEBHOOK_MATCH_SCORE_AUTHOR_ICON.getConfigValue(null))
+                .setDescription(Lang.WEBHOOK_MATCH_ASSIST.getConfigValue(new String[]{args[1], HOME_NAME, UtilManager.formatTime(Timer.getSecondsParsed()), args[2], HOME_NAME, String.valueOf(home_result), String.valueOf(away_result), AWAY_NAME})));
+          } try {
             webhook.execute();
           } catch (IOException e) {
             getLogger().send(sender, e.getMessage());
@@ -152,10 +161,18 @@ public class ResultCommand extends BaseCommand {
           getLogger().send("default", Lang.RESULT_ADD.getConfigValue(new String[]{args[1], away}));
         else getLogger().send("default", Lang.RESULT_ADD_ASSIST.getConfigValue(new String[]{args[1], away, args[2]}));
         if (webhook != null && isLeague()) {
-          webhook.setContent(Lang.WEBHOOK_MATCH_SCORE.getConfigValue(new String[]{args[1], AWAY_NAME, UtilManager.formatTime(Timer.getSecondsParsed()), HOME_NAME, String.valueOf(home_result), String.valueOf(away_result), AWAY_NAME}));
-          if (args.length == 3)
-            webhook.setContent(Lang.WEBHOOK_MATCH_ASSIST.getConfigValue(new String[]{args[1], AWAY_NAME, UtilManager.formatTime(Timer.getSecondsParsed()), args[2], HOME_NAME, String.valueOf(home_result), String.valueOf(away_result), AWAY_NAME}));
-          try {
+          webhook.setContent("");
+          if (args.length == 2) {
+            webhook.addEmbed(new DiscordWebhook.EmbedObject()
+                .setColor(Color.decode(Lang.WEBHOOK_MATCH_SCORE_COLOR.getConfigValue(null)))
+                .setAuthor(Lang.WEBHOOK_MATCH_SCORE_AUTHOR_NAME.getConfigValue(new String[]{AWAY_NAME}), null, Lang.WEBHOOK_MATCH_SCORE_AUTHOR_ICON.getConfigValue(null))
+                .setDescription(Lang.WEBHOOK_MATCH_SCORE_DESC.getConfigValue(new String[]{args[1], AWAY_NAME, UtilManager.formatTime(Timer.getSecondsParsed()), HOME_NAME, String.valueOf(home_result), String.valueOf(away_result), AWAY_NAME})));
+          } else {
+            webhook.addEmbed(new DiscordWebhook.EmbedObject()
+                .setColor(Color.decode(Lang.WEBHOOK_MATCH_SCORE_COLOR.getConfigValue(null)))
+                .setAuthor(Lang.WEBHOOK_MATCH_SCORE_AUTHOR_NAME.getConfigValue(new String[]{AWAY_NAME}), null, Lang.WEBHOOK_MATCH_SCORE_AUTHOR_ICON.getConfigValue(null))
+                .setDescription(Lang.WEBHOOK_MATCH_ASSIST.getConfigValue(new String[]{args[1], AWAY_NAME, UtilManager.formatTime(Timer.getSecondsParsed()), args[2], HOME_NAME, String.valueOf(home_result), String.valueOf(away_result), AWAY_NAME})));
+          } try {
             webhook.execute();
           } catch (IOException e) {
             getLogger().send(sender, e.getMessage());

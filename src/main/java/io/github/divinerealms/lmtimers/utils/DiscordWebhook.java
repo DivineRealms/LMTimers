@@ -4,17 +4,14 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.net.ssl.HttpsURLConnection;
-import java.awt.Color;
+import java.awt.*;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.lang.reflect.Array;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Class used to execute Discord Webhooks with low effort
@@ -31,7 +28,7 @@ public class DiscordWebhook {
   private String avatarUrl;
   @Setter
   private boolean tts;
-  private final List<EmbedObject> embeds = new ArrayList<>();
+  public final List<EmbedObject> embeds = new ArrayList<>();
 
   /**
    * Constructs a new DiscordWebhook instance
@@ -149,6 +146,8 @@ public class DiscordWebhook {
       connection.getInputStream().close(); //I'm not sure why but it doesn't work without getting the InputStream
       connection.disconnect();
     }
+
+    this.embeds.clear();
   }
 
   @Getter

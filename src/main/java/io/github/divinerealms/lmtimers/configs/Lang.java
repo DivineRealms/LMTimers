@@ -131,8 +131,11 @@ public enum Lang {
   WEBHOOK_MATCH_ENDED("webhook.match-ended", "Kraj utakmice, rezultat: **{0} {1} - {2} {3}**. Trajanje: **`{4}`**."),
   WEBHOOK_MATCH_HALFTIME("webhook.match-halftime", "Poluvreme, rezultat: **{0} {1} - {2} {3}**."),
   WEBHOOK_MATCH_SECONDHALF("webhook.match-secondhalf", "Početak drugog poluvremena, rezultat: **{0} {1} - {2} {3}**."),
-  WEBHOOK_MATCH_SCORE("webhook.match-score", "**GOOL!** Scorer: **{0}** (**{1}** - **`{2}`**)!"),
-  WEBHOOK_MATCH_ASSIST("webhook.match-assist", "**GOOL!** Scorer: **{0}** (**{1}** - **`{2}`**)! Asistent: **{3}**.");
+  WEBHOOK_MATCH_SCORE_COLOR("webhook.match-score.color", "#ffb80c"),
+  WEBHOOK_MATCH_SCORE_AUTHOR_NAME("webhook.match-score.author.name", "GOOOOL za {0}"),
+  WEBHOOK_MATCH_SCORE_AUTHOR_ICON("webhook.match-score.author.icon", "https://cdn.discordapp.com/emojis/1067135709644865637.webp"),
+  WEBHOOK_MATCH_SCORE_DESC("webhook.match-score.description", "<:ArrowRightGray:813815804768026705>Strelac: **{0}**{7}<:ArrowRightGray:813815804768026705>Rezultat: **{3} {4} - {5} {6}**\\n<:ArrowRightGray:813815804768026705>Vreme: `{2}`"),
+  WEBHOOK_MATCH_ASSIST("webhook.match-assist", "<:ArrowRightGray:813815804768026705>Strelac: **{0}**\\n<:ArrowRightGray:813815804768026705>Asistent: **{3}**\\n<:ArrowRightGray:813815804768026705>Rezultat: **{4} {5} - {6} {7}**\\n<:ArrowRightGray:813815804768026705>Vreme: `{2}`");
 
   private static FileConfiguration LANG;
   private final String path, def;
