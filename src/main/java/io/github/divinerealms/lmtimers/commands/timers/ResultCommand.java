@@ -222,21 +222,30 @@ public class ResultCommand extends BaseCommand {
     if (args.length == 2) {
       HOME_NAME = args[0].toUpperCase();
       AWAY_NAME = args[1].toUpperCase();
-      if (getHelper().groupExists(args[0].toLowerCase())) {
-        if (getHelper().groupHasMeta(args[0].toLowerCase(), "team")) {
-          home = getHelper().getGroupMeta(args[0].toLowerCase(), "team");
-          league = true;
-        } else home = getHelper().getGroupMeta(args[0].toLowerCase(), "b");
-      } else home = args[0];
-      if (getHelper().groupExists(args[1].toLowerCase())) {
-        if (getHelper().groupHasMeta(args[1].toLowerCase(), "team")) {
-          away = getHelper().getGroupMeta(args[1].toLowerCase(), "team");
-          league = true;
-        } else away = getHelper().getGroupMeta(args[1].toLowerCase(), "b");
-      } else away = args[1];
+      if (sender.hasPermission("group.fcfa")) {
+        if (getPrefix().equals("&bEvent")) {
+          getLogger().send(sender, Lang.WEBHOOK_PREFIX_NOT_SETUP.getConfigValue(null));
+          return;
+        }
+        if (getHelper().groupExists(args[0].toLowerCase())) {
+          if (getHelper().groupHasMeta(args[0].toLowerCase(), "team")) {
+            home = getHelper().getGroupMeta(args[0].toLowerCase(), "team");
+            league = true;
+          } else home = getHelper().getGroupMeta(args[0].toLowerCase(), "b");
+        } else home = args[0];
+        if (getHelper().groupExists(args[1].toLowerCase())) {
+          if (getHelper().groupHasMeta(args[1].toLowerCase(), "team")) {
+            away = getHelper().getGroupMeta(args[1].toLowerCase(), "team");
+            league = true;
+          } else away = getHelper().getGroupMeta(args[1].toLowerCase(), "b");
+        } else away = args[1];
+      } else {
+        home = args[0];
+        away = args[0];
+      }
       getLogger().send("fcfa", Lang.TIMER_TEAMS_SET.getConfigValue(new String[]{home, away}));
       if (webhook != null && isLeague()) {
-        webhook.setContent(Lang.WEBHOOK_TEAMS_SET.getConfigValue(new String[]{HOME_NAME, AWAY_NAME}));
+        webhook.setContent(Lang.WEBHOOK_TEAMS_SET.getConfigValue(new String[]{getPrefix(), HOME_NAME, AWAY_NAME}));
         try {
           webhook.execute();
         } catch (IOException e) {
@@ -302,6 +311,7 @@ public class ResultCommand extends BaseCommand {
     return new Timer(getPlugin(), (int) (time.toSeconds() + 60), () -> getLogger().send("default", Lang.RESULT_SECONDHALF.getConfigValue(new String[]{getPrefix(), home, "" + home_result, "" + away_result, away})), () -> {
       getLogger().send("default", Lang.RESULT_OVER.getConfigValue(new String[]{getPrefix(), home, "" + home_result, "" + away_result, away}));
       getLogger().broadcastBar(Lang.RESULT_END.getConfigValue(new String[]{getPrefix(), home, "" + home_result, "" + away_result, away}));
+      reset();
     }, (t) -> {
       String secondsParsed = UtilManager.formatTime(Timer.getSecondsParsed());
       String seconds = UtilManager.formatTime(Timer.getSeconds() - 60);
